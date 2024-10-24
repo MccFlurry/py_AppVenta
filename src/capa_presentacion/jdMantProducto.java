@@ -1,7 +1,7 @@
 package capa_presentacion;
 
 import capa_negocio.clsCategoria;
-import capa_negocio.clsMarca;
+import capa_negocio.clsMarcas;
 import capa_negocio.clsProducto;
 import javax.swing.table.*;
 import java.sql.*;
@@ -12,7 +12,7 @@ public class jdMantProducto extends javax.swing.JDialog {
 
     clsProducto objProducto = new clsProducto();
     clsCategoria objCategoria = new clsCategoria();
-    clsMarca objMarca = new clsMarca();
+    clsMarcas objMarca = new clsMarcas();
 
     public jdMantProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -38,7 +38,7 @@ public class jdMantProducto extends javax.swing.JDialog {
         DefaultComboBoxModel modeloCat = new DefaultComboBoxModel();
         cbCategoria.setModel(modeloCat);
         try {
-            rsCat = objCategoria.listarCategorias();
+            rsCat = objCategoria.listarCategoria();
             while (rsCat.next()) {
                 modeloCat.addElement(rsCat.getString("nomcat"));
             }

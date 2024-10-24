@@ -28,7 +28,7 @@ public class jdMantCat extends javax.swing.JDialog {
         modelo.addColumn("Vigencia");
 
         try {
-            rsCat = objCategoria.listarCategorias();
+            rsCat = objCategoria.listarCategoria();
             while (rsCat.next()) {
                 if (rsCat.getString("vigencia").equals("t")) {
                     vigencia = "VIGENTE";
@@ -364,7 +364,7 @@ public class jdMantCat extends javax.swing.JDialog {
             if (btnNuevo.getText().equals("Nuevo")) {
                 btnNuevo.setText("Guardar");
                 limpiarControles();
-                txtCodigo.setText(objCategoria.generarCodCategoria().toString());
+                txtCodigo.setText(objCategoria.generarCodigoCategoria().toString());
                 txtNombre.requestFocus();
             } else {
                 btnNuevo.setText("Nuevo");

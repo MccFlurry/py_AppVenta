@@ -1,26 +1,26 @@
 package capa_negocio;
 
-import java.sql.*;
 import capa_datos.clsJDBC;
+import java.sql.ResultSet;
 
-public class clsCategoria {
+public class clsMarcas {
 
     clsJDBC objConectar = new clsJDBC();
     String strSQL;
     ResultSet rs = null;
 
-    public ResultSet listarCategoria() throws Exception {
-        strSQL = "select * from categoria";
+    public ResultSet listarMarcas() throws Exception {
+        strSQL = "select * from marca";
         try {
             rs = objConectar.consultarBD(strSQL);
             return rs;
         } catch (Exception e) {
-            throw new Exception("Error al listar categorias -->" + e.getMessage());
+            throw new Exception("Error al listar marca -->" + e.getMessage());
         }
     }
 
-    public Integer generarCodigoCategoria() throws Exception {
-        strSQL = "select COALESCE (Max(codcategoria), 0) + 1 as codigo from categoria";
+    public Integer generarCodigoMarca() throws Exception {
+        strSQL = "select COALESCE (Max(codmarc), 0) + 1 as codigo from marca";
 
         try {
             rs = objConectar.consultarBD(strSQL);
@@ -29,53 +29,53 @@ public class clsCategoria {
                 return rs.getInt("codigo");
             }
         } catch (Exception e) {
-            throw new Exception("Error al generar codigo de categoria -->" + e.getMessage());
+            throw new Exception("Error al generar codigo de marca -->" + e.getMessage());
         }
         return 0;
     }
 
-    public void registrar(int cod, String nom, String desc, boolean vigen) throws Exception {
-        strSQL = "insert into categoria values ( '" + cod + "', '" + nom + "', '" + desc + "', '" + vigen + "')";
+    public void registrar(int cod, String nom, boolean vigen) throws Exception {
+        strSQL = "insert into marca values ( " + cod + ", '" + nom + "', " + vigen + ")";
 
         try {
             objConectar.ejecutarBD(strSQL);
         } catch (Exception e) {
-            throw new Exception("Error al registrar la categoria -->" + e.getMessage());
+            throw new Exception("Error al registrar la marca -->" + e.getMessage());
         }
     }
 
-    public ResultSet buscarCategoria(Integer cod) throws Exception {
+    public ResultSet buscarMarca(Integer cod) throws Exception {
         strSQL = "select * from marca where codMarca = " + cod;
         try {
             rs = objConectar.consultarBD(strSQL);
             return rs;
         } catch (Exception e) {
-            throw new Exception("Error al buscar categoria");
+            throw new Exception("Error al buscar marca");
         }
     }
 
-    public void eliminarCategoria(Integer cod) throws Exception {
-        strSQL = "delete from categoria where codcategoria = " + cod;
+    public void eliminarMarca(Integer cod) throws Exception {
+        strSQL = "delete from marca where codMarca = " + cod;
 
         try {
             objConectar.ejecutarBD(strSQL);
         } catch (Exception e) {
-            throw new Exception("Error al eliminar la categoria -->" + e.getMessage());
+            throw new Exception("Error al eliminar la marca -->" + e.getMessage());
         }
     }
 
     public void darBaja(Integer cod) throws Exception {
-        strSQL = "update categoria set vigencia = false where codCategoria = " + cod;
+        strSQL = "update marca set vigencia = false where codMarca = " + cod;
 
         try {
             objConectar.ejecutarBD(strSQL);
         } catch (Exception e) {
-            throw new Exception("Error al dar de baja la categoria -->" + e.getMessage());
+            throw new Exception("Error al dar de baja la marca -->" + e.getMessage());
         }
     }
 
-    public void modificar(Integer cod, String nom, String desc, boolean vigen) throws Exception {
-        strSQL = "update categoria set nomcategoria ='" + nom + "', descripcion = '" + desc + "',vigencia = " + vigen + " where codCategoria =" + cod;
+    public void modificar(Integer cod, String nom, boolean vigen) throws Exception {
+        strSQL = "update marca set nomMarca ='" + nom + "', vigencia = " + vigen + " where codMarca = " + cod;
 
         try {
             objConectar.ejecutarBD(strSQL);
@@ -102,15 +102,16 @@ public class clsCategoria {
         }
     }
     
-    public Integer obtenerCodigoCategoria (String nom) throws Exception {
-        strSQL = "select codcategoria from categoria where nomcategoria = '" + nom + "'";
+    public Integer obtenerCodigoMarca (String nom) throws Exception {
+        strSQL = "select codmarca from marca where nommarca = '" + nom + "'";
         try {
             rs = objConectar.consultarBD(strSQL);
-            if (rs.next()) return rs.getInt("codcategoria");
+            if (rs.next()) return rs.getInt("codmarca");
         } catch (Exception e) {
-            throw new Exception ("Error al buscar categoria");
+            throw new Exception ("Error al buscar marca");
         }
         
         return 0;
     }
+
 }

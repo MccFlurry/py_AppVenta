@@ -1,6 +1,6 @@
 package capa_presentacion;
 
-import capa_negocio.clsMarca;
+import capa_negocio.clsMarcas;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 public final class jdMantMarca extends javax.swing.JDialog {
 
-    clsMarca objMarca = new clsMarca();
+    clsMarcas objMarca = new clsMarcas();
 
     public jdMantMarca(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
