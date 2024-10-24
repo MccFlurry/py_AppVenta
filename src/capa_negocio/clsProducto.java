@@ -125,6 +125,78 @@ public class clsProducto {
         }
     }
     
+    public int getPrecioMax() throws Exception{
+        strSQL = "select max(precio) from producto;";
+        try{
+            rs = objConectar.consultarBD(strSQL);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e){
+            throw new Exception ("Error al obtener precios");
+        }
+        return 0;
+    }
     
+    public ResultSet filtrarMarca(int marca, String nom, int min, int max) throws Exception {
+        strSQL="SELECT p.*, m.nommarca, c.nomcategoria FROM "
+                + "(SELECT * FROM producto WHERE codmarca = " + marca
+                + "AND UPPER(nomproducto) LIKE UPPER('%" + nom + "%') "
+                + "AND precio BETWEEN " + min + " AND " + max + ") p "
+                + "INNER JOIN marca m ON p.codmarca = m.codmarca "
+                + "INNER JOIN categoria c ON p.codcategoria=c.codcategoria;" ;
+        try {
+            rs=objConectar.consultarBD(strSQL);
+            return rs;
+        } catch(Exception e) {
+            throw new Exception("Error al filtrar productos" + e.getMessage());
+        }
+    }
+    
+    public ResultSet filtrarCategoria(int categoria, String nom, int min, int max) throws Exception {
+        strSQL="SELECT p.*, m.nommarca, c.nomcategoria FROM "
+                + "(SELECT * FROM producto WHERE codcateegoria = " + categoria
+                + "AND UPPER(nomproducto) LIKE UPPER('%" + nom + "%') "
+                + "AND precio BETWEEN " + min + " AND " + max + ") p "
+                + "INNER JOIN marca m ON p.codmarca = m.codmarca "
+                + "INNER JOIN categoria c ON p.codcategoria=c.codcategoria;" ;
+        try {
+            rs=objConectar.consultarBD(strSQL);
+            return rs;
+        } catch(Exception e) {
+            throw new Exception("Error al filtrar productos" + e.getMessage());
+        }
+    }
+    
+    public ResultSet filtrar(String nom, int min, int max) throws Exception {
+        strSQL="SELECT p.*, m.nommarca, c.nomcategoria FROM "
+                + "(SELECT * FROM producto WHERE UPPER(nomproducto) "
+                + "LIKE UPPER('%" + nom + "%') "
+                + "AND precio BETWEEN " + min + " AND " + max + ") p "
+                + "INNER JOIN marca m ON p.codmarca = m.codmarca "
+                + "INNER JOIN categoria c ON p.codcategoria=c.codcategoria;" ;
+        try {
+            rs=objConectar.consultarBD(strSQL);
+            return rs;
+        } catch(Exception e) {
+            throw new Exception("Error al filtrar productos" + e.getMessage());
+        }
+    }
+    
+    public ResultSet filtrar(int marca, int categoria, String nom, int min, int max) throws Exception {
+        strSQL="SELECT p.*, m.nommarca, c.nomcategoria FROM "
+                + "(SELECT * FROM producto WHERE codmarca = " + marca +
+                " AND codcategoria = " + categoria + " "
+                + "AND UPPER(nomproducto) LIKE UPPER('%" + nom + "%') "
+                + "AND precio BETWEEN " + min + " AND " + max + ") p "
+                + "INNER JOIN marca m ON p.codmarca = m.codmarca "
+                + "INNER JOIN categoria c ON p.codcategoria=c.codcategoria;" ;
+        try {
+            rs=objConectar.consultarBD(strSQL);
+            return rs;
+        } catch(Exception e) {
+            throw new Exception("Error al filtrar productos" + e.getMessage());
+        }
+    }
 
 }

@@ -80,6 +80,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="B&#xda;SQUEDA AVANZADA"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBusquedaAvanzadaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

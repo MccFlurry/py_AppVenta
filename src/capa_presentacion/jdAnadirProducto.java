@@ -3,7 +3,9 @@ package capa_presentacion;
 import java.sql.*;
 
 import capa_negocio.clsProducto;
+import java.awt.Frame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 public class jdAnadirProducto extends javax.swing.JDialog {
@@ -132,7 +134,12 @@ public class jdAnadirProducto extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblProductos);
 
-        btnBusquedaAvanzada.setText("B�SQUEDA AVANZADA");
+        btnBusquedaAvanzada.setText("BÚSQUEDA AVANZADA");
+        btnBusquedaAvanzada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBusquedaAvanzadaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,6 +190,26 @@ public class jdAnadirProducto extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_tblProductosMouseClicked
+
+    private void btnBusquedaAvanzadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaAvanzadaActionPerformed
+        // TODO add your handling code here:
+        jdBusquedaAvanzada objConsulta = new jdBusquedaAvanzada((Frame) SwingUtilities.getWindowAncestor(this), true);
+        objConsulta.setBuscando(true);
+        objConsulta.setLocationRelativeTo(this);
+        objConsulta.setVisible(true);
+        int cod = objConsulta.getCod();
+        if (cod > 0) {
+            String ctd = String.valueOf(JOptionPane.showInputDialog(this, "Ingrese la cantidad:"));
+
+            if (ctd != null) {
+                try {
+                    pasarDatos(cod, Integer.parseInt(ctd));
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Cantidad no válida");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnBusquedaAvanzadaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
