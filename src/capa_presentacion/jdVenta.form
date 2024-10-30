@@ -84,6 +84,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jDateChooser1" min="-2" pref="219" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -106,6 +108,7 @@
                               <Component id="txtNumero" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDateChooser1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -139,6 +142,11 @@
               <Image iconType="3" name="/recursos/buscar1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarVentaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
         </Component>
       </SubComponents>
     </Container>
@@ -178,9 +186,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="rdbBoleta" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdBoleta" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="rdbFactura" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdFactura" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="txtTipo" max="32767" attributes="0"/>
                   </Group>
@@ -222,8 +230,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="rdbBoleta" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdbFactura" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdBoleta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdFactura" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -254,6 +262,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDniRuc">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDniRucKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodigo">
         </Component>
@@ -267,6 +278,9 @@
               <Image iconType="3" name="/recursos/buscarCliente.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -275,12 +289,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtTipo">
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rdbBoleta">
+        <Component class="javax.swing.JRadioButton" name="rdBoleta">
           <Properties>
             <Property name="text" type="java.lang.String" value="BOLETA"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rdbFactura">
+        <Component class="javax.swing.JRadioButton" name="rdFactura">
           <Properties>
             <Property name="text" type="java.lang.String" value="FACTURA"/>
           </Properties>
@@ -459,6 +473,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="GUARDAR"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEliminar">
           <Properties>
@@ -491,9 +508,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtNumero1" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNumero2" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNumero3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtSubTotal" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIGV" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTotal" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               </Group>
@@ -505,17 +522,17 @@
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNumero1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtSubTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNumero2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIGV" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNumero3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -538,11 +555,11 @@
             <Property name="text" type="java.lang.String" value="Total:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNumero1">
+        <Component class="javax.swing.JTextField" name="txtSubTotal">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNumero2">
+        <Component class="javax.swing.JTextField" name="txtIGV">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNumero3">
+        <Component class="javax.swing.JTextField" name="txtTotal">
         </Component>
       </SubComponents>
     </Container>

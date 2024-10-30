@@ -133,4 +133,21 @@ public class clsCliente {
         }
     }
 
+    public ResultSet buscarClienteDniRuc(String cod, Boolean tipo) throws Exception {
+        if (tipo) {
+            strSQL = "select * from CLIENTE C inner join TIPO_CLIENTE T "
+                    + "on C.codTipo=T.codTipo where dni='" + cod + "'";
+        } else {
+            strSQL = "select * from CLIENTE C inner join TIPO_CLIENTE T "
+                    + "on C.codTipo=T.codTipo where ruc='" + cod + "'";
+        }
+
+        try {
+            rs = objConectar.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("Error al buscar cliente");
+        }
+    }
+
 }
