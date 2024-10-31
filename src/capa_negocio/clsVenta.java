@@ -59,9 +59,9 @@ public class clsVenta {
             con.setAutoCommit(false);
             sent = con.createStatement();
 
-            String strSQL = "INSERT INTO venta VALUES (" + cod + ", CURRENT_DATE, "
+            strSQL = "INSERT INTO venta VALUES (" + cod + ", CURRENT_DATE, "
                     + total + ", " + subtotal + ", " + igv + ", " + tipo
-                    + ", false, " + cliente + ");";
+                    + ", false, " + cliente + "," + clsFunciones.ID_INICIO_SESION + " );";
             sent.executeUpdate(strSQL);
 
             int ctd = tblDetalle.getRowCount();
@@ -93,5 +93,4 @@ public class clsVenta {
             objConectar.desconectar();
         }
     }
-
 }

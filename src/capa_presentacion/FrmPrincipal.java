@@ -1,5 +1,6 @@
 package capa_presentacion;
 
+import capa_negocio.clsFunciones;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
@@ -25,17 +26,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
             lblfecha.setText(sdf.format(fechaHora1));
             lblHora.setText(sdd.format(fechaHora1));
         });
-        timer.start(); // Iniciar el Timer
+        timer.start();
     }
 
     @Override
     public final Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Recursos/icono.png"));
         return retValue;
-    }
-
-    public void setUsuarioLogueado(String nombreUsuario) {
-        lbluser.setText(nombreUsuario);
     }
 
     @SuppressWarnings("unchecked")
@@ -282,6 +279,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jdInicioSesion is = new jdInicioSesion(this, true);
         is.setLocationRelativeTo(this);
         is.setVisible(true);
+        lbluser.setText(clsFunciones.USUARIO_INICIO_SESION);
     }//GEN-LAST:event_formWindowOpened
 
     private void mnuMantMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMantMarcasActionPerformed

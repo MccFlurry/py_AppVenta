@@ -1,5 +1,6 @@
 package capa_presentacion;
 
+import capa_negocio.clsFunciones;
 import capa_negocio.clsUsuario;
 import javax.swing.JOptionPane;
 
@@ -144,9 +145,9 @@ public class jdInicioSesion extends javax.swing.JDialog {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
         try {
-        if (objUsuario.validarVigencia(txtUsuario.getText())) {
-            nombreUsuario = objUsuario.login(txtUsuario.getText(), txtContra.getText());
-            if (nombreUsuario.equals("")) {
+        if (objUsuario.validarVigencia2(txtUsuario.getText())) {
+            objUsuario.login2(txtUsuario.getText(), txtContra.getText());
+            if (clsFunciones.USUARIO_INICIO_SESION.equals("")) {
                 JOptionPane.showMessageDialog(null, "Acceso denegado, intente nuevamente");
                 intentos++;
                 if (intentos >= 3) {
@@ -154,11 +155,8 @@ public class jdInicioSesion extends javax.swing.JDialog {
                     System.exit(0);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, nombreUsuario + ", Bienvenido al sistema");
-
-                FrmPrincipal frmPrincipal = (FrmPrincipal) this.getParent();
-                frmPrincipal.setUsuarioLogueado(nombreUsuario);
-                
+                JOptionPane.showMessageDialog(null, clsFunciones.USUARIO_INICIO_SESION + ", Bienvenido al sistema");
+                JOptionPane.showMessageDialog(null, "Usuario con ID: "+clsFunciones.ID_INICIO_SESION);
                 this.dispose();
             }
         } else {
